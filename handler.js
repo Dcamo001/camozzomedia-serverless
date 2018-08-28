@@ -4,9 +4,9 @@ const AWS = require("aws-sdk");
 
 const s3 = new AWS.S3();
 
-module.exports.fetchGallery = async (event, context) => {
+module.exports.fetchImages = async (event, context) => {
   const bucket = "camozzomedia";
-  const path_to_folder = "/images/California";
+  const path_to_folder = "/images/";
   const params = { Bucket: bucket, Delimiter: path_to_folder };
 
   s3.listObjects(params, function(err, data) {
