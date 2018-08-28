@@ -26,3 +26,4 @@ functions:
       - http:
           path: fetchImages
           method: get
+          cors: true
