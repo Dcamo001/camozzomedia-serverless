@@ -1,0 +1,24 @@
+# For full config options, check the docs:
+#    docs.serverless.com
+
+service: aws-nodejs
+app: camozzomedia
+tenant: dcamozzo
+
+custom:
+  bucket: camozzomedia
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  region: us-west-1
+  profile: default
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - s3:ListObjects
+      Resource: "arn:aws:s3:::${self:custom.bucket}/*"
+
+functions:
+  fetchGallery:
+    handler: handler.fetchGallery
